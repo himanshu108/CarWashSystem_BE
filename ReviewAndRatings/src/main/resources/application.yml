@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+  
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://HP-Test:test@cluster0.irhqo.mongodb.net/ReviewAndRatings
+      
+  application:
+    name: reviewnratings-service
