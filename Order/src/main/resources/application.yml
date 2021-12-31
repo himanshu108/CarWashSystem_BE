@@ -1,0 +1,48 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://HP-Test:test@cluster0.irhqo.mongodb.net/Order
+      
+  application:
+    name: order-service
+    
+eureka:
+  instance:
+    hostname: localhost
+    
+resilience4j:
+  circuitbreaker:
+    instances:
+      Order-Service:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+      
+      
+logging:
+ level:
+  root: INFO
+  com:
+   ondemandcarwash: TRACE
+
+#logging:level:root: TRACE
