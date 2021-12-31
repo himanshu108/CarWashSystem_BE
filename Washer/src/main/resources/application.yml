@@ -1,0 +1,11 @@
+
+server:
+  port: 8003
+  
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://HP-Test:test@cluster0.irhqo.mongodb.net/Washer
+      
+  application:
+    name: WASHER-SERVICE
