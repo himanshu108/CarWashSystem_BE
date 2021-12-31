@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://HP-Test:test@cluster0.irhqo.mongodb.net/Main
+      
+  application:
+    name: ADMIN-SERVICE
