@@ -1,0 +1,40 @@
+server:
+  port: 1111
+eureka:
+  instance:
+    hostname: localhost
+spring:
+  application:
+     name: APIGATWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+      - id: ADMIN-SERVICE
+        uri: http://localhost:8000/
+        predicates:
+        - Path=/admin/**
+        
+      - id: CUSTOMER-SERVICE
+        uri: http://localhost:8080/
+        predicates:
+        - Path=/customer/**
+        
+      - id: order-service
+        uri: lb://order-service/
+        predicates:
+        - Path=/order/**
+        
+      - id: WASHER-SERVICE
+        uri: http://localhost:8003/
+        predicates:
+        - Path=/washer/**
+        
+      - id: ADDRESS-SERVICE
+        uri: lb://ADDRESS-SERVICE/
+        predicates:
+        - Path=/address/**
+        
+      - id: reviewnratings-service
+        uri: lb://reviewnratings-service/
+        predicates:
+        - Path=/reviewratings/**
